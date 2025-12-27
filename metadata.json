@@ -1,0 +1,8 @@
+{
+  "name": "RepInc",
+  "description": "Real-Time Incident Reporting and Resource Coordination Platform for emergency response.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

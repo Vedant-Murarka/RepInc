@@ -1,9 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Access environment variables
-// In a real Vite/React setup, these might be import.meta.env.VITE_SUPABASE_URL
-// For standard Create React App, it's process.env.REACT_APP_...
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
+// Vite uses import.meta.env and requires the VITE_ prefix
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error("Supabase environment variables are missing! Check your .env file.");
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
